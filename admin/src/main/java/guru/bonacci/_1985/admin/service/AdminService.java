@@ -27,6 +27,7 @@ public class AdminService {
 
   @Transactional("transactionManager")
   public Optional<AdminUser> createAdmin(Long userId, String bankDetails) {
+  	userRepo.findAll().forEach(u -> log.info("" + u.getId()));
     var user = userRepo.findById(userId)
       .orElseThrow(() -> new EntityNotFoundException("Cannot find user with id " + userId));
 

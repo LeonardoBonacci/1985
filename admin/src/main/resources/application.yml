@@ -1,4 +1,4 @@
-spring.application.name: heroes-admin-app
+spring.application.name: admin-app
 
 spring:
   # kafka:
@@ -9,7 +9,7 @@ spring:
   
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/heroes
+    url: jdbc:mysql://localhost:3306/_1985
     username: mysqluser
     password: mysqlpw
 

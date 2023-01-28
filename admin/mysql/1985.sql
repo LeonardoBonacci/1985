@@ -10,11 +10,11 @@
 # GRANT SELECT, RELOAD, SHOW DATABASES, REPLICATION SLAVE, REPLICATION CLIENT  ON *.* TO 'debezium';
 
 # Create the database that we'll use to populate data and watch the effect in the binlog
-CREATE DATABASE heroes;
-# GRANT ALL PRIVILEGES ON heroes.* TO 'mysqluser'@'%';
+CREATE DATABASE _1985;
+GRANT ALL PRIVILEGES ON _1985.* TO 'mysqluser'@'%';
 
 # Switch to this database
-USE heroes;
+USE _1985;
 
 drop table if exists account;
 drop table if exists admin_user;
@@ -28,8 +28,6 @@ create table account (
   description varchar(255),
   start_amount decimal(19,2) not null,
   pool_id bigint not null,
-  pool_name varchar(255) not null,
-  pool_account_id varchar(255) not null,
   user_id bigint not null,
   primary key (id)
 ) engine=InnoDB;

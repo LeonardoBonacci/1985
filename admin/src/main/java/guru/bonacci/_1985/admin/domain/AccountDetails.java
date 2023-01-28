@@ -62,14 +62,6 @@ public class AccountDetails {
   @Builder.Default
   private boolean active = true;
 
-  // to facilitate cdc
-  @Column(nullable = false, updatable = false)
-  private String poolName;
-
-  // to facilitate cdc
-  @Column(nullable = false, updatable = false)
-  private String poolAccountId;
-
   @Override
   public String toString() {
     return "AccountDetails(id="+id

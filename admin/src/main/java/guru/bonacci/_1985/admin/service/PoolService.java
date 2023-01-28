@@ -13,7 +13,9 @@ import guru.bonacci._1985.admin.repository.AccountRepository;
 import guru.bonacci._1985.admin.repository.AdminRepository;
 import guru.bonacci._1985.admin.repository.PoolRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PoolService {
@@ -41,6 +43,7 @@ public class PoolService {
   // https://docs.spring.io/spring-kafka/reference/html/#ex-jdbc-sync
   @Transactional("transactionManager")
   public Pool createPool(Long adminId, Pool pool) {
+  	adminRepo.findAll().forEach(u -> log.info("" + u.getId()));
     var admin = adminRepo.findById(adminId)
          .orElseThrow(() -> new EntityNotFoundException("Cannot find admin with id " + adminId));
     pool.setAdmin(admin);
