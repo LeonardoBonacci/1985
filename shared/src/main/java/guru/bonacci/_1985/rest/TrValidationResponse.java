@@ -9,7 +9,7 @@ import lombok.Value;
 @ToString
 public class TrValidationResponse {
 
-  private String poolType;
+  private String poolType; //TODO make enum
   private Boolean fromIsValid;
   private Boolean toIsValid;
   private BigDecimal fromsBalance;

@@ -1,5 +1,7 @@
 package guru.bonacci._1985.rest;
 
+import javax.annotation.Nonnull;
+
 import lombok.ToString;
 import lombok.Value;
 
@@ -7,7 +9,7 @@ import lombok.Value;
 @ToString
 public class TrValidationRequest {
 
-  private String poolId; //required
-  private String from; //required
-  private String to; //required
+	@Nonnull private String poolId; 
+	@Nonnull private String from;
+	@Nonnull private String to;
 }
