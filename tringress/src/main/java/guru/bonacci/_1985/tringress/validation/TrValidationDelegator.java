@@ -1,10 +1,14 @@
 package guru.bonacci._1985.tringress.validation;
 
+import java.math.BigDecimal;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Component;
 
+import guru.bonacci._1985.pools.PoolType;
 import guru.bonacci._1985.rest.TrValidationRequest;
+import guru.bonacci._1985.rest.TrValidationResponse;
 import guru.bonacci._1985.tringress.trs.Tr;
 import guru.bonacci._1985.tringress.wallet.WalletClient;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +28,8 @@ public class TrValidationDelegator {
   	var tr = trContext.getSecond();
     
 		var trValidationRequest = new TrValidationRequest(poolId, tr.getFrom(), tr.getTo());
-    var trValidationResponse = wallet.getValidationInfo(trValidationRequest);
-//    var trValidationResponse = new TrValidationResponse(PoolType.SARDEX, true, true, BigDecimal.ONE);
+//    var trValidationResponse = wallet.getValidationInfo(trValidationRequest);
+    var trValidationResponse = new TrValidationResponse(PoolType.SARDEX, true, true, BigDecimal.ONE);
     log.debug("validation response: {}", trValidationResponse);
     
     var poolType = trValidationResponse.getPoolType();

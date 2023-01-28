@@ -10,4 +10,4 @@ spring:
   application.name: tringress-app
   mvc.async.request-timeout: 10000000
 
-redis.host: localhost
+  redis.host: localhost

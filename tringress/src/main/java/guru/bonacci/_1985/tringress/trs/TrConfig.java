@@ -4,24 +4,23 @@ import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 
 @Configuration
 public class TrConfig {
 
-  @Value("${redis.host}") String redisHost;
+  @Value("${spring.redis.host}") String redisHost;
   
 
-  @SuppressWarnings("deprecation")
   @Bean
   public LettuceConnectionFactory redisConnectionFactory() {
-    LettuceConnectionFactory connectionFactory = new LettuceConnectionFactory();
-    connectionFactory.setDatabase(0);
-    connectionFactory.setHostName("localhost");
-    connectionFactory.setPort(16379);
-    connectionFactory.setPassword("mypass");
-    connectionFactory.setTimeout(60000);
-    return connectionFactory;
+  	var redis = new RedisStandaloneConfiguration();
+  	redis.setDatabase(0);
+  	redis.setHostName("localhost");
+    redis.setPort(16379);
+    redis.setPassword("mypass");
+    return new LettuceConnectionFactory(redis);
   }
   
   @Bean

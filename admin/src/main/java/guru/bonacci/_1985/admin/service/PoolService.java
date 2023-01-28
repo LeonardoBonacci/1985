@@ -50,9 +50,15 @@ public class PoolService {
          .orElseThrow(() -> new EntityNotFoundException("Cannot find admin with id " + adminId));
     pool.setAdmin(admin);
 
-    var kafkaTopic = TopicBuilder.name(TRANSFER_TOPIC_PREFIX + pool.getName()).replicas(1).build();
+    var kafkaTopic = 
+    		TopicBuilder.name(TRANSFER_TOPIC_PREFIX + pool.getName())
+    								.replicas(1)
+    								.config("log.retention.bytes", "-1")
+    								.config("log.retention.ms", "-1")
+    								.build();
     kafka.createOrModifyTopics(kafkaTopic);
     log.info("created Kafka topic {}", kafkaTopic.name());
+
     return poolRepo.saveAndFlush(pool);
   }
   
