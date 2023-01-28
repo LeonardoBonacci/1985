@@ -44,20 +44,19 @@ public class PoolService {
                   .collect(Collectors.toList());
   }
   
-  @Transactional("transactionManager")
+  @Transactional
   public Pool createPool(Long adminId, Pool pool) {
-  	adminRepo.findAll().forEach(u -> log.info("" + u.getId()));
     var admin = adminRepo.findById(adminId)
          .orElseThrow(() -> new EntityNotFoundException("Cannot find admin with id " + adminId));
     pool.setAdmin(admin);
 
     var kafkaTopic = TopicBuilder.name(TRANSFER_TOPIC_PREFIX + pool.getName()).replicas(1).build();
     kafka.createOrModifyTopics(kafkaTopic);
-    
+    log.info("created Kafka topic {}", kafkaTopic.name());
     return poolRepo.saveAndFlush(pool);
   }
   
-  @Transactional(transactionManager = "transactionManager")
+  @Transactional
   public void deactivate(Long id) {
     getPool(id).ifPresent(pool -> {
       pool.setActive(false);

@@ -32,13 +32,12 @@ public class AccountService {
     return accountRepo.findByPoolId(id);
   }
 
-  @Transactional(transactionManager = "transactionManager")
+  @Transactional
   public Optional<AccountDetails> createAccount(Long poolId, Long userId, AccountDetails account) {
     var pool = poolRepo.findById(poolId)
         .orElseThrow(() -> new EntityNotFoundException("Cannot find pool with id " + poolId));
     account.setPool(pool);
 
-    userRepo.findAll(); //FIXME why?
     var user = userRepo.findById(userId)
       .orElseThrow(() -> new EntityNotFoundException("Cannot find user with id " + userId));
     account.setUser(user);
@@ -54,7 +53,7 @@ public class AccountService {
     return accountRepo.findByPoolIdAndNameLike(poolId, "%"+accountName+"%");
   }
 
-  @Transactional(transactionManager = "transactionManager")
+  @Transactional
   public void deactivate(Long id) {
     getAccount(id).ifPresent(account -> {
       account.setActive(false);

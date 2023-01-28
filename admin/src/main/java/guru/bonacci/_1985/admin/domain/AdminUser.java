@@ -44,7 +44,7 @@ public class AdminUser {
 
   @JsonIgnore
   @Builder.Default
-  @OneToMany(mappedBy = "admin", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "admin")
   private List<Pool> pools = new ArrayList<>();
   
   @Override
