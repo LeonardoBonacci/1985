@@ -27,7 +27,7 @@ public class TrService {
   	validator.isValid(trContext);
   	
     var result = producer.send(trContext);
-    log.info("sent to {}: {}", trContext.getFirst(), result);
+    log.info("sent to {}: {}", TrProducer.TRANSFER_TOPIC_PREFIX + trContext.getFirst(), result);
     return result;
   }
   

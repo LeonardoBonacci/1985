@@ -25,6 +25,7 @@ public class TrValidationDelegator {
     
 		var trValidationRequest = new TrValidationRequest(poolId, tr.getFrom(), tr.getTo());
     var trValidationResponse = wallet.getValidationInfo(trValidationRequest);
+//    var trValidationResponse = new TrValidationResponse(PoolType.SARDEX, true, true, BigDecimal.ONE);
     log.debug("validation response: {}", trValidationResponse);
     
     var poolType = trValidationResponse.getPoolType();

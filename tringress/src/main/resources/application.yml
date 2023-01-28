@@ -2,12 +2,11 @@ server.port: 8082
 
 spring:
   kafka:
-    bootstrap-servers: localhost:9092
-    # producer:
-    #   key-serializer: org.apache.kafka.common.serialization.StringSerializer
-    #   value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    #   transaction-id-prefix: tx-
-
+    producer:
+      transaction-id-prefix: tx-
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      
   application.name: tringress-app
   mvc.async.request-timeout: 10000000
 

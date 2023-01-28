@@ -3,6 +3,7 @@ package guru.bonacci._1985.tringress.trs;
 import org.springframework.data.util.Pair;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,9 +15,10 @@ public class TrProducer {
 	
   private final KafkaTemplate<String, Tr> kafkaTemplate;
 
+  @Transactional
   public Tr send(Pair<String, Tr> transferContext) {
   	var transfer = transferContext.getSecond();
-    long timestamp = sendMessage(transferContext.getFirst() + TRANSFER_TOPIC_PREFIX, transfer.getFrom(), transfer);
+    long timestamp = sendMessage(TRANSFER_TOPIC_PREFIX + transferContext.getFirst(), transfer.getFrom(), transfer);
     transfer.setWhen(timestamp);
     return transfer;
   }
