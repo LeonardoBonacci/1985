@@ -1,12 +1,12 @@
-package guru.bonacci5.tringress.validation.pool;
+package guru.bonacci5._1985.tringress.validation.pool;
 
 import java.math.BigDecimal;
 
 import org.springframework.stereotype.Component;
 
-import guru.bonacci5.tringress.validation.PoolTypeBasedValidator;
-import guru.bonacci5.tringress.validation.TrValidationResponse;
-import guru.bonacci5.tringress.validation.TrValidationResult;
+import guru.bonacci5._1985.tringress.validation.PoolTypeBasedValidator;
+import guru.bonacci5._1985.tringress.validation.TrValidationResponse;
+import guru.bonacci5._1985.tringress.validation.TrValidationResult;
 
 @Component("sardex")
 public class SardexPoolTypeValidator implements PoolTypeBasedValidator {

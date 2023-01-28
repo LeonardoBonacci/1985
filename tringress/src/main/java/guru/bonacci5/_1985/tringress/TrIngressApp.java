@@ -1,4 +1,4 @@
-package guru.bonacci5.tringress;
+package guru.bonacci5._1985.tringress;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

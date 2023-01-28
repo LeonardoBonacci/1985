@@ -1,4 +1,4 @@
-package guru.bonacci5.tringress.tip;
+package guru.bonacci5._1985.tringress.tip;
 
 import java.time.Duration;
 

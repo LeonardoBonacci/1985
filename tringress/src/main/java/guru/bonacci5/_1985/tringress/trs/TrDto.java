@@ -1,10 +1,10 @@
-package guru.bonacci5.tringress.trs;
+package guru.bonacci5._1985.tringress.trs;
 
 import java.math.BigDecimal;
 
-import guru.bonacci5.tringress.trs.validation.ExecFirst;
-import guru.bonacci5.tringress.trs.validation.ExecSecond;
-import guru.bonacci5.tringress.trs.validation.FieldsValueDifferent;
+import guru.bonacci5._1985.tringress.trs.validation.ExecFirst;
+import guru.bonacci5._1985.tringress.trs.validation.ExecSecond;
+import guru.bonacci5._1985.tringress.trs.validation.FieldsValueDifferent;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.DecimalMin;

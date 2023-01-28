@@ -1,4 +1,4 @@
-package guru.bonacci5.tringress.validation;
+package guru.bonacci5._1985.tringress.validation;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

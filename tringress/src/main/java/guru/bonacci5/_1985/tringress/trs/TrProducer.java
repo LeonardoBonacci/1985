@@ -1,4 +1,4 @@
-package guru.bonacci5.tringress.trs;
+package guru.bonacci5._1985.tringress.trs;
 
 import org.springframework.data.util.Pair;
 import org.springframework.kafka.core.KafkaTemplate;

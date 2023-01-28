@@ -1,11 +1,11 @@
-package guru.bonacci5.tringress.trs;
+package guru.bonacci5._1985.tringress.trs;
 
 import org.springframework.dao.ConcurrencyFailureException;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
-import guru.bonacci5.tringress.tip.TIPCache;
-import guru.bonacci5.tringress.validation.TrValidationDelegator;
+import guru.bonacci5._1985.tringress.tip.TIPCache;
+import guru.bonacci5._1985.tringress.validation.TrValidationDelegator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

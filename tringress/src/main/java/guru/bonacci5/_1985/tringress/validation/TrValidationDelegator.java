@@ -1,14 +1,16 @@
-package guru.bonacci5.tringress.validation;
+package guru.bonacci5._1985.tringress.validation;
 
 import java.math.BigDecimal;
 
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Component
 @RequiredArgsConstructor
 public class TrValidationDelegator {
 
