@@ -67,6 +67,6 @@ public class TrConfig {
   
   @Bean
   public NewTopic topic1() {
-       return new NewTopic("foo", 1, (short) 1);
+       return new NewTopic("transfers_for_coro", 1, (short) 1);
   }
 }

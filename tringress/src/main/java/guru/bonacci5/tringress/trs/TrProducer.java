@@ -14,11 +14,9 @@ public class TrProducer {
 	
   private final KafkaTemplate<String, Tr> kafkaTemplate;
 
-  
   public Tr send(Pair<String, Tr> transferContext) {
   	var transfer = transferContext.getSecond();
-//    long timestamp = sendMessage(transferContext.getFirst() + TRANSFER_TOPIC, transfer.getFrom(), transfer);
-    long timestamp = sendMessage("foo", transfer.getFrom(), transfer);
+    long timestamp = sendMessage(transferContext.getFirst() + TRANSFER_TOPIC, transfer.getFrom(), transfer);
     transfer.setWhen(timestamp);
     return transfer;
   }

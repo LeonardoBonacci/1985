@@ -14,8 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class RedisTipCache implements TIPCache {
   
-  @Value("${spring.mvc.async.request-timeout}")
-  private Long ttlInMs;
+//  @Value("${spring.mvc.async.request-timeout}")
+  private Long ttlInMs = 1000l;
 
   private final StringRedisTemplate redis;
 
