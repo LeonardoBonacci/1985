@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.kafka.config.TopicBuilder;
+import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,10 +22,12 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class PoolService {
 
-  private final PoolRepository poolRepo;
+	public static final String TRANSFER_TOPIC_PREFIX = "transfers_for_";
+
+	private final PoolRepository poolRepo;
   private final AdminRepository adminRepo;
   private final AccountRepository accountRepo;
-//FIXME  private final KafkaTemplate<String, KafkaPool> kafkaTemplate;
+  private final KafkaAdmin kafka;
   
   
   public Optional<Pool> getPool(Long id) {
@@ -40,16 +44,15 @@ public class PoolService {
                   .collect(Collectors.toList());
   }
   
-  // https://docs.spring.io/spring-kafka/reference/html/#ex-jdbc-sync
   @Transactional("transactionManager")
   public Pool createPool(Long adminId, Pool pool) {
   	adminRepo.findAll().forEach(u -> log.info("" + u.getId()));
     var admin = adminRepo.findById(adminId)
          .orElseThrow(() -> new EntityNotFoundException("Cannot find admin with id " + adminId));
     pool.setAdmin(admin);
-    
-//    var kafkaPool = KafkaPool.from(pool); 
-//    kafkaTemplate.send("pool", kafkaPool.getPoolId(), kafkaPool);
+
+    var kafkaTopic = TopicBuilder.name(TRANSFER_TOPIC_PREFIX + pool.getName()).replicas(1).build();
+    kafka.createOrModifyTopics(kafkaTopic);
     
     return poolRepo.saveAndFlush(pool);
   }
@@ -60,7 +63,6 @@ public class PoolService {
       pool.setActive(false);
       pool.setAdmin(null);
       
-//      kafkaTemplate.send("pool", pool.getName(), null);
       poolRepo.saveAndFlush(pool);
     });
   }
