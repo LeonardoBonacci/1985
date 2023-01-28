@@ -32,7 +32,7 @@ public class TrValidationDelegator {
     	throw new InvalidTransferException("pool " + poolId + " ...");
     }    
     
-    var validator = appContext.getBean(poolType, PoolTypeBasedValidator.class);
+    var validator = appContext.getBean(poolType.toString().toLowerCase(), PoolTypeBasedValidator.class);
 
     var validationResult = validator.validate(trValidationResponse, tr.getAmount());
     if (!validationResult.isValid()) {

@@ -1,0 +1,28 @@
+spring.application.name: heroes-admin-app
+
+spring:
+  # kafka:
+  #   producer:
+  #     transaction-id-prefix: tx-
+  #     key-serializer: org.apache.kafka.common.serialization.StringSerializer
+  #     value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/heroes
+    username: mysqluser
+    password: mysqlpw
+
+  jpa:
+    hibernate.ddl-auto: none
+    show-sql: true
+    spring.jpa.properties.hibernate.format_sql: true
+    open-in-view: false
+    properties.hibernate.enable_lazy_load_no_trans: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect  
+
+  jackson.mapper.accept-case-insensitive-enums: true
+
+logging.level.org.springframework.transaction: trace
+logging.level.org.springframework.kafka.transaction: debug
+logging.level.org.springframework.jdbc: debug  

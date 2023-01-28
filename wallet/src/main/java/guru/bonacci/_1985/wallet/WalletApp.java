@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import guru.bonacci._1985.pools.PoolType;
 import guru.bonacci._1985.rest.TrValidationRequest;
 import guru.bonacci._1985.rest.TrValidationResponse;
 import jakarta.validation.Valid;
@@ -25,6 +26,6 @@ public class WalletApp {
 	@PostMapping("wallet")
 	public TrValidationResponse validationInfo(@RequestBody @Valid TrValidationRequest trValRequest) {
 		log.info(trValRequest.toString());
-		return new TrValidationResponse("sardex", true, true, BigDecimal.ONE);
+		return new TrValidationResponse(PoolType.SARDEX, true, true, BigDecimal.ONE);
 	}
 }

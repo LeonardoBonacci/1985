@@ -21,6 +21,7 @@
     <module>shared</module>
     <module>tringress</module>
     <module>wallet</module>
+    <module>admin</module>
   </modules>
 
   <dependencies>
