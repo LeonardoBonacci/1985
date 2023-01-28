@@ -10,13 +10,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TrProducer {
 
-	public static final String TRANSFER_TOPIC = "transfers_for_";
+	public static final String TRANSFER_TOPIC_PREFIX = "transfers_for_";
 	
   private final KafkaTemplate<String, Tr> kafkaTemplate;
 
   public Tr send(Pair<String, Tr> transferContext) {
   	var transfer = transferContext.getSecond();
-    long timestamp = sendMessage(transferContext.getFirst() + TRANSFER_TOPIC, transfer.getFrom(), transfer);
+    long timestamp = sendMessage(transferContext.getFirst() + TRANSFER_TOPIC_PREFIX, transfer.getFrom(), transfer);
     transfer.setWhen(timestamp);
     return transfer;
   }
