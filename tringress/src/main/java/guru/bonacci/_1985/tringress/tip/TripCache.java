@@ -1,6 +1,7 @@
 package guru.bonacci._1985.tringress.tip;
 
-public interface TIPCache {
+// TRIP stands for 'trans in progress'
+public interface TripCache {
   
   public Boolean lock(String lockId);
 }

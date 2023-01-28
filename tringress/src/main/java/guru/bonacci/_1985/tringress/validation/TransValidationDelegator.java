@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import guru.bonacci._1985.pools.PoolType;
 import guru.bonacci._1985.rest.TrValidationRequest;
 import guru.bonacci._1985.rest.TrValidationResponse;
-import guru.bonacci._1985.tringress.trs.Tr;
+import guru.bonacci._1985.tringress.trans.Trans;
 import guru.bonacci._1985.tringress.wallet.WalletClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,13 +17,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class TrValidationDelegator {
+public class TransValidationDelegator {
 
   private final ApplicationContext appContext;
   private final WalletClient wallet;
   
 
-  public boolean isValid(Pair<String, Tr> trContext) {
+  public boolean isValid(Pair<String, Trans> trContext) {
   	var poolId = trContext.getFirst();
   	var tr = trContext.getSecond();
     

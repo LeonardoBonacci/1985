@@ -1,0 +1,40 @@
+{
+    "tableName": "coro",
+    "schemaName": "trans",
+    "topicName": "trans.coro",
+    "message": {
+        "dataFormat": "json",
+        "fields": [
+            {
+                "name": "transferId",
+                "mapping": "transferId",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "poolId",
+                "mapping": "poolId",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "_from",
+                "mapping": "from",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "to",
+                "mapping": "to",
+                "type": "VARCHAR"
+            },
+            {
+                "name": "amount",
+                "mapping": "amount",
+                "type": "DOUBLE"
+            },
+            {
+                "name": "when",
+                "mapping": "when",
+                "type": "BIGINT"
+            }
+        ]
+    }
+}

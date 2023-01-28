@@ -1,4 +1,4 @@
-package guru.bonacci._1985.tringress.trs;
+package guru.bonacci._1985.tringress.trans;
 
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Stream.concat;

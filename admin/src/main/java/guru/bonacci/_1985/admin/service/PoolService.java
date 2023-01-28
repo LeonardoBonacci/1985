@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.apache.kafka.common.config.TopicConfig;
 import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class PoolService {
 
-	public static final String TRANSFER_TOPIC_PREFIX = "transfers_for_";
-
+	public static final String TRANS_TOPIC_PREFIX = "trans.";
+	
 	private final PoolRepository poolRepo;
   private final AdminRepository adminRepo;
   private final AccountRepository accountRepo;
@@ -51,10 +52,10 @@ public class PoolService {
     pool.setAdmin(admin);
 
     var kafkaTopic = 
-    		TopicBuilder.name(TRANSFER_TOPIC_PREFIX + pool.getName())
+    		TopicBuilder.name(TRANS_TOPIC_PREFIX + pool.getName())
     								.replicas(1)
-    								.config("log.retention.bytes", "-1")
-    								.config("log.retention.ms", "-1")
+    								.config(TopicConfig.LOCAL_LOG_RETENTION_BYTES_CONFIG, "-1")
+    								.config(TopicConfig.LOCAL_LOG_RETENTION_MS_CONFIG, "-1")
     								.build();
     kafka.createOrModifyTopics(kafkaTopic);
     log.info("created Kafka topic {}", kafkaTopic.name());

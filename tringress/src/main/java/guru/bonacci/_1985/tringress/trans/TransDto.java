@@ -1,10 +1,10 @@
-package guru.bonacci._1985.tringress.trs;
+package guru.bonacci._1985.tringress.trans;
 
 import java.math.BigDecimal;
 
-import guru.bonacci._1985.tringress.trs.validation.ExecFirst;
-import guru.bonacci._1985.tringress.trs.validation.ExecSecond;
-import guru.bonacci._1985.tringress.trs.validation.FieldsValueDifferent;
+import guru.bonacci._1985.tringress.trans.validation.ExecFirst;
+import guru.bonacci._1985.tringress.trans.validation.ExecSecond;
+import guru.bonacci._1985.tringress.trans.validation.FieldsValueDifferent;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.DecimalMin;
@@ -19,8 +19,8 @@ import lombok.Value;
   message = "'from' and 'to' must be different"
 )
 @Value
-@GroupSequence({TrDto.class, ExecFirst.class, ExecSecond.class})
-public class TrDto {
+@GroupSequence({TransDto.class, ExecFirst.class, ExecSecond.class})
+public class TransDto {
 
   @NotBlank(message = "where is poolId?")
   private String poolId;

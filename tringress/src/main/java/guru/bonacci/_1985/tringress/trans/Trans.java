@@ -1,4 +1,4 @@
-package guru.bonacci._1985.tringress.trs;
+package guru.bonacci._1985.tringress.trans;
 
 import java.math.BigDecimal;
 
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tr implements Cloneable {
+public class Trans implements Cloneable {
 
   private String transferId; //required
   private String from; //required

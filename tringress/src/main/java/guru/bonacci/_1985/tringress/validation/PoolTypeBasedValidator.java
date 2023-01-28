@@ -6,7 +6,7 @@ import guru.bonacci._1985.rest.TrValidationResponse;
 
 public interface PoolTypeBasedValidator {
 
-  TrValidationResult validate(TrValidationResponse info, BigDecimal amount);
+  TransValidationResult validate(TrValidationResponse info, BigDecimal amount);
   
   boolean hasSufficientFunds(BigDecimal balance);
 }

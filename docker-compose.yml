@@ -39,3 +39,12 @@ services:
      - MYSQL_USER=mysqluser
      - MYSQL_PASSWORD=mysqlpw
   
+  trino:
+    image: trinodb/trino
+    depends_on:
+      - kafka
+      - mysql
+    ports:
+      - "8080:8080"
+    volumes:
+      - $PWD/trino/etc:/etc/trino

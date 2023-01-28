@@ -1,25 +1,25 @@
-package guru.bonacci._1985.tringress.trs;
+package guru.bonacci._1985.tringress.trans;
 
 import org.springframework.dao.ConcurrencyFailureException;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
-import guru.bonacci._1985.tringress.tip.TIPCache;
-import guru.bonacci._1985.tringress.validation.TrValidationDelegator;
+import guru.bonacci._1985.tringress.tip.TripCache;
+import guru.bonacci._1985.tringress.validation.TransValidationDelegator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class TrService {
+public class TransService {
 
-  private final TIPCache cache;
-  private final TrValidationDelegator validator;
-  private final TrProducer producer;
+  private final TripCache cache;
+  private final TransValidationDelegator validator;
+  private final TransProducer producer;
   
 
-  public Tr transfer(Pair<String, Tr> trContext) {
+  public Trans transfer(Pair<String, Trans> trContext) {
   	if (isBlocked(trContext.getFirst() + "." + trContext.getSecond().getFrom())) {
   		throw new ConcurrencyFailureException("Concurrent transfer request, please try again.");
   	}
@@ -27,7 +27,7 @@ public class TrService {
   	validator.isValid(trContext);
   	
     var result = producer.send(trContext);
-    log.info("sent to {}: {}", TrProducer.TRANSFER_TOPIC_PREFIX + trContext.getFirst(), result);
+    log.info("sent to {}: {}", TransProducer.TRANS_TOPIC_PREFIX + trContext.getFirst(), result);
     return result;
   }
   

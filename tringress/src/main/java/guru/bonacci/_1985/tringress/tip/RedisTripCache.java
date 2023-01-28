@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Repository
 @RequiredArgsConstructor
-public class RedisTipCache implements TIPCache {
+public class RedisTripCache implements TripCache {
   
   @Value("${spring.mvc.async.request-timeout}")
   private Long ttlInMs;

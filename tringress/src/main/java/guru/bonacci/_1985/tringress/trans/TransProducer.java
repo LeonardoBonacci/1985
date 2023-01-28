@@ -1,4 +1,4 @@
-package guru.bonacci._1985.tringress.trs;
+package guru.bonacci._1985.tringress.trans;
 
 import org.springframework.data.util.Pair;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -9,22 +9,22 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class TrProducer {
+public class TransProducer {
 
-	public static final String TRANSFER_TOPIC_PREFIX = "transfers_for_";
+	public static final String TRANS_TOPIC_PREFIX = "trans.";
 	
-  private final KafkaTemplate<String, Tr> kafkaTemplate;
+  private final KafkaTemplate<String, Trans> kafkaTemplate;
 
   @Transactional
-  public Tr send(Pair<String, Tr> transferContext) {
+  public Trans send(Pair<String, Trans> transferContext) {
   	var transfer = transferContext.getSecond();
-    long timestamp = sendMessage(TRANSFER_TOPIC_PREFIX + transferContext.getFirst(), transfer.getFrom(), transfer);
+    long timestamp = sendMessage(TRANS_TOPIC_PREFIX + transferContext.getFirst(), transfer.getFrom(), transfer);
     transfer.setWhen(timestamp);
     return transfer;
   }
  
   // exposed for testing
-  long sendMessage(String topic, String key, Tr message) {
+  long sendMessage(String topic, String key, Trans message) {
     try {
       return kafkaTemplate.send(topic, key, message).get().getRecordMetadata().timestamp();
     } catch (Throwable t) {

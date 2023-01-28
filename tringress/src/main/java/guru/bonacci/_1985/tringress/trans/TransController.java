@@ -1,4 +1,4 @@
-package guru.bonacci._1985.tringress.trs;
+package guru.bonacci._1985.tringress.trans;
 
 import java.util.UUID;
 import java.util.concurrent.Callable;
@@ -18,13 +18,13 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("transfers")
 @RequiredArgsConstructor
-public class TrController {
+public class TransController {
 
-	private final TrService service;
+	private final TransService service;
 	
 	
 	@PostMapping
-  public Callable<Tr> transfer(@RequestBody @Valid TrDto dto) {
+  public Callable<Trans> transfer(@RequestBody @Valid TransDto dto) {
     return () -> {
       var watch = new StopWatch();
       watch.start();
@@ -39,9 +39,9 @@ public class TrController {
     };  
   }
   
-  static Pair<String, Tr> toTr(TrDto dto) {
+  static Pair<String, Trans> toTr(TransDto dto) {
     return Pair.of(dto.getPoolId(), 	
-    		Tr.builder()
+    		Trans.builder()
             .transferId(UUID.randomUUID().toString())
             .from(dto.getFrom())
             .to(dto.getTo())

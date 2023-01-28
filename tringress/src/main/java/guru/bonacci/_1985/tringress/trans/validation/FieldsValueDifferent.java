@@ -1,4 +1,4 @@
-package guru.bonacci._1985.tringress.trs.validation;
+package guru.bonacci._1985.tringress.trans.validation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
