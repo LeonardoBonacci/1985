@@ -1,0 +1,7 @@
+spring:
+  application.name: 1985-tringress-app
+  mvc.async.request-timeout: 1000
+
+  kafka.bootstrap-servers: localhost:9092
+
+redis.host: localhost
