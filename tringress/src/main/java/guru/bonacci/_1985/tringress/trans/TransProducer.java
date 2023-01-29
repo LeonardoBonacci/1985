@@ -18,6 +18,7 @@ public class TransProducer {
   @Transactional
   public Trans send(Pair<String, Trans> transferContext) {
   	var transfer = transferContext.getSecond();
+  	// FIXME - not urgent - then when in the payload should somehow be the kafka timestamp
     long timestamp = sendMessage(TRANS_TOPIC_PREFIX + transferContext.getFirst(), transfer.getFrom(), transfer);
     transfer.setWhen(timestamp);
     return transfer;

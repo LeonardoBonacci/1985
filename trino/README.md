@@ -20,36 +20,29 @@ SELECT coalesce(SMILE, 0) - coalesce(CRY, 0) AS balance FROM debit, credit;
 
 
 ```
-...
-...
-
 SHOW CATALOGS;
 SHOW SCHEMAS IN mysql;
+USE mysql._1985;
 SHOW TABLES;
-
-CREATE TABLE IF NOT EXISTS bla (
-  blakey bigint,
-  blaname varchar
-)
-COMMENT 'A table to join.';
-
-INSERT INTO bla VALUES (1, 'foo');
-
-select mysql.heroes.bla.* from mysql.heroes.bla;
-select kafka.trans.transfers.* from kafka.trans.transfers;
-
-select bla.*, transfers.* from mysql.heroes.bla as bla join kafka.trans.transfers as transfers on transfers._from = bla.blaname;
 ```
 
+To supply this info
 ```
-trino> select bla.*, transfers.* from mysql.heroes.bla as bla join kafka.trans.transfers as transfers on transfers._from = bla.blaname;
- blakey | blaname | transferid  | poolid  | _from | to  | amount |    when
---------+---------+-------------+---------+-------+-----+--------+------------
-      1 | foo     | i-am-random | bahamas | foo   | bar |   10.1 |       NULL
-      1 | foo     | i-am-random | bahamas | foo   | bar |   10.1 | 1674179837
-(2 rows)
+  private PoolType poolType; 
+  SELECT type FROM mysql._1985.pool WHERE name = 'coro';
 
-Query 20230120_025955_00038_hdrcg, FINISHED, 1 node
-Splits: 11 total, 11 done (100.00%)
-0.20 [6 rows, 544B] [29 rows/s, 2.63KB/s]
+  private Boolean fromIsValid; // means is part of poolId
+  private Boolean toIsValid; // means is part of pool
+WITH
+  inpool AS (SELECT users.name FROM mysql._1985.user_info AS users 
+             JOIN mysql._1985.account AS accounts ON accounts.user_id = users.id
+             JOIN mysql._1985.pool AS pools ON pools.id = accounts.pool_id
+             WHERE users.name = 'foo' OR users.name = 'bar')
+SELECT name FROM inpool;
+
+  private BigDecimal fromsBalance;
+WITH
+  debit AS (SELECT sum(amount) AS SMILE FROM kafka.trans.coro where to = 'foo'),
+  credit AS (SELECT sum(amount) AS CRY FROM kafka.trans.coro where _from = 'foo')
+SELECT coalesce(SMILE, 0) - coalesce(CRY, 0) AS balance FROM debit, credit;
 ```
