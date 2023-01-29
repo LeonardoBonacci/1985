@@ -8,9 +8,6 @@
 ```
 
 ```
-valid
 curl -d '{"poolId": "coro", "from":"foo", "to":"bar", "amount":10.10}' -H "Content-Type: application/json" -X POST localhost:8082/transfers
-curl -d '{"poolId": "coro", "from":"baz", "to":"goo", "amount":100.10}' -H "Content-Type: application/json" -X POST localhost:8082/transfers
-
-invalid
+curl -d '{"poolId": "coro", "from":"bar", "to":"foo", "amount":100.10}' -H "Content-Type: application/json" -X POST localhost:8082/transfers
 ```

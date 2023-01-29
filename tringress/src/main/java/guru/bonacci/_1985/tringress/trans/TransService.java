@@ -1,6 +1,5 @@
 package guru.bonacci._1985.tringress.trans;
 
-import org.springframework.dao.ConcurrencyFailureException;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +18,9 @@ public class TransService {
   private final TransProducer producer;
   
 
-  public Trans transfer(Pair<String, Trans> trContext) {
+  public Trans transfer(Pair<String, Trans> trContext) throws TransferConcurrencyException {
   	if (isBlocked(trContext.getFirst() + "." + trContext.getSecond().getFrom())) {
-  		throw new ConcurrencyFailureException("Concurrent transfer request, please try again.");
+  		throw new TransferConcurrencyException();
   	}
 
   	validator.isValid(trContext);

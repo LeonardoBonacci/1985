@@ -54,8 +54,8 @@ public class PoolService {
     var kafkaTopic = 
     		TopicBuilder.name(TRANS_TOPIC_PREFIX + pool.getName())
     								.replicas(1)
-    								.config(TopicConfig.LOCAL_LOG_RETENTION_BYTES_CONFIG, "-1")
-    								.config(TopicConfig.LOCAL_LOG_RETENTION_MS_CONFIG, "-1")
+    								.config(TopicConfig.RETENTION_BYTES_CONFIG, "-1")
+    								.config(TopicConfig.RETENTION_MS_CONFIG, "-1")
     								.build();
     kafka.createOrModifyTopics(kafkaTopic);
     log.info("created Kafka topic {}", kafkaTopic.name());

@@ -1,4 +1,4 @@
-package guru.bonacci.trino.wallet.queries;
+package guru.bonacci._1985.wallet.queries;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -16,7 +16,7 @@ public class SardexPoolTypeValidator implements PoolTypeBasedValidator {
   
   @Override 
   public TransValidationResult validate(TrValidationResponse info, BigDecimal amount) {
-    if (info.getPoolType() == null && !info.getFromIsValid() || !info.getToIsValid() || info.getFromsBalance() == null) {
+    if (!info.getFromIsValid() || !info.getToIsValid() || info.getFromsBalance() == null) {
       return new TransValidationResult(false, "invalid transfer attempt");
     }
 

@@ -1,4 +1,5 @@
-/Users/jeffreyvanhelden/IdeaProjects/trino-spring-boot/demo/src/main/java/guru/bonacci/trino/demo/DemoApplication.java
-/Users/jeffreyvanhelden/IdeaProjects/trino-spring-boot/demo/src/main/java/guru/bonacci/trino/demo/UserBla.java
-/Users/jeffreyvanhelden/IdeaProjects/trino-spring-boot/demo/src/main/java/guru/bonacci/trino/demo/User.java
-/Users/jeffreyvanhelden/IdeaProjects/trino-spring-boot/demo/src/main/java/guru/bonacci/trino/demo/UserRepository.java
+/Users/jeffreyvanhelden/IdeaProjects/1985/wallet/src/main/java/guru/bonacci/_1985/wallet/queries/Queries.java
+/Users/jeffreyvanhelden/IdeaProjects/1985/wallet/src/main/java/guru/bonacci/_1985/wallet/queries/BalanceQueriesImpl.java
+/Users/jeffreyvanhelden/IdeaProjects/1985/wallet/src/main/java/guru/bonacci/_1985/wallet/queries/BalanceQueries.java
+/Users/jeffreyvanhelden/IdeaProjects/1985/wallet/src/main/java/guru/bonacci/_1985/wallet/WalletApp.java
+/Users/jeffreyvanhelden/IdeaProjects/1985/wallet/src/main/java/guru/bonacci/_1985/wallet/queries/Unused.java
