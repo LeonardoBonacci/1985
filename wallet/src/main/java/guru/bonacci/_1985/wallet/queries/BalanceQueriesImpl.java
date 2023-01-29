@@ -13,7 +13,7 @@ public class BalanceQueriesImpl implements BalanceQueries {
   @PersistenceContext
   private EntityManager entityManager;
 
-
+	
 	@Override
 	public BigDecimal findBalance(String topic, String name) {
 		var queryStr = String.format("WITH "
@@ -25,6 +25,6 @@ public class BalanceQueriesImpl implements BalanceQueries {
 		var query = entityManager.createNativeQuery(queryStr);
 		query.setParameter("name", name);
 
-    return BigDecimal.valueOf((double)query.getSingleResult()).setScale(2);
+		return BigDecimal.valueOf((double)query.getSingleResult());
 	}
 }

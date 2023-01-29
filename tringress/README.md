@@ -2,9 +2,8 @@
 ./bin/kafka-topics --bootstrap-server=localhost:9092 --list
 ./bin/kafka-topics --bootstrap-server=localhost:9092 --delete --topic __transaction_state
 
-./bin/kafka-console-producer --bootstrap-server localhost:9092 --topic transfers_for_coro
-
-./bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic transfers_for_coro --from-beginning
+./bin/kafka-console-producer --bootstrap-server localhost:9092 --topic trans.coro
+./bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic trans.coro --from-beginning
 ```
 
 ```

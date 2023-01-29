@@ -8,5 +8,5 @@ public interface PoolTypeBasedValidator {
 
   TransValidationResult validate(TrValidationResponse info, BigDecimal amount);
   
-  boolean hasSufficientFunds(BigDecimal balance);
+  boolean hasSufficientFunds(BigDecimal balance, BigDecimal amount);
 }

@@ -18,7 +18,7 @@ public class TransService {
   private final TransProducer producer;
   
 
-  public Trans transfer(Pair<String, Trans> trContext) throws TransferConcurrencyException {
+  public Trans transfer(Pair<String, Trans> trContext) {
   	if (isBlocked(trContext.getFirst() + "." + trContext.getSecond().getFrom())) {
   		throw new TransferConcurrencyException();
   	}

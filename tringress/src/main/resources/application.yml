@@ -1,4 +1,6 @@
-server.port: 8082
+server:
+  port: 8082
+  error.include-message: always
 
 spring:
   kafka:
@@ -11,3 +13,5 @@ spring:
   mvc.async.request-timeout: 1000
 
   redis.host: localhost
+  
+  

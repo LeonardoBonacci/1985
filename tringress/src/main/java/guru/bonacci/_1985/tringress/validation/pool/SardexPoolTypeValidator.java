@@ -20,13 +20,13 @@ public class SardexPoolTypeValidator implements PoolTypeBasedValidator {
       return new TransValidationResult(false, "invalid transfer attempt");
     }
 
-    return hasSufficientFunds(info.getFromsBalance()) ?
+    return hasSufficientFunds(info.getFromsBalance(), amount) ?
           new TransValidationResult(true, null) :
           new TransValidationResult(false, "insufficient balance");
   }    
       
   @Override 
-  public boolean hasSufficientFunds(BigDecimal balance) {
-    return balance.compareTo(MIN_BALANCE) > -1;
+  public boolean hasSufficientFunds(BigDecimal balance, BigDecimal amount) {
+  	return balance.subtract(amount).compareTo(MIN_BALANCE) > -1;
   }
 }    
